@@ -11,13 +11,17 @@ class App extends Component {
         }
     }
     increment = () => {
-        const currentCount = this.state.count
-        const newCount = currentCount + 1
+        const amountToAdd = prompt('How muchh do you want to add?')
+        const newCount = this.state.count + parseInt(amountToAdd)
+        
 
         this.setState({ count: newCount })
     }
     decrement = () => {
-        this.setState({ count: this.state.count - 1 })
+        const amountToSub = prompt('How much to subtract?')
+        const newSub = this.state.count - parseInt(amountToSub)
+        
+        this.setState({ count: newSub })
     }
 
     render() {
