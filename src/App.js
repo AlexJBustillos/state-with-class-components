@@ -8,26 +8,32 @@ class App extends Component {
 
         this.state = {
             count: 0,
+            inputtedNumber: 0
         }
     }
     increment = () => {
-        const amountToAdd = prompt('How muchh do you want to add?')
-        const newCount = this.state.count + parseInt(amountToAdd)
+        const newCount = this.state.count + this.state.inputtedNumber
         
 
         this.setState({ count: newCount })
     }
     decrement = () => {
-        const amountToSub = prompt('How much to subtract?')
-        const newSub = this.state.count - parseInt(amountToSub)
+        const newSub = this.state.count - this.state.inputtedNumber
         
         this.setState({ count: newSub })
+    }
+
+    changeInput = (evt) => {
+        let newValue = parseInt(evt.target.value) || 0
+
+        this.setState({inputtedNumber: newValue})
     }
 
     render() {
         return(
             <div>
                 <h1> {this.state.count} </h1>
+                <input value={this.state.inputtedNumber} onChange={this.changeInput}/>
                 <button onClick={this.increment}>+</button>
                 <button onClick={this.decrement}>-</button>
             </div>
